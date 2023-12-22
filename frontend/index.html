@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Welcome to the Zoo</h1>
+    <p> What animal would you like the name of?</p>
+    <button onclick="getRhino()">Rhino</button>
+    <div id="rhi"></div>
+    <button onclick="getCat()">Cat</button>
+    <div id="cat"></div>
+
+
+</body>
+
+<script>
+
+
+    // function getRhino() {
+    //     var requestOptions = {
+    //         method: 'GET',
+    //         redirect: 'follow'
+    //     };
+
+    // check in network    
+    // fetch("http://localhost:3001/rhino", requestOptions)
+    //     .then(response => response.json())
+    //     .then(result => {
+    //             document.getElementById("rhi").append(result)
+    //         })
+    //     
+    const rhi = document.getElementById("rhi")
+    function getRhino() {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        const fetchProm = fetch("http://localhost:3001/rhino")
+        fetchProm.then((Response) => {
+            return Response.json()
+        }).then((rhinooo) => {
+            const names = rhinooo.map((rhy) => {
+                return rhy.name
+            })
+            rhi.innerHTML = names
+        })
+    }
+
+    const cat = document.getElementById("cat")
+    function getCat() {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        const fetchProm = fetch("http://localhost:3001/cat")
+        fetchProm.then((Response) => {
+            return Response.json()
+        }).then((rhinooo) => {
+            const names = rhinooo.map((rhy) => {
+                return rhy.name
+            })
+            cat.innerHTML = names
+        })
+    }
+
+
+
+</script>
+
+</html>
